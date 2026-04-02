@@ -37,14 +37,6 @@
 
         <button class="navbar__action-btn">
           <img
-            :src="require('@/assets/images/Component 2.svg')"
-            alt="Wishlist"
-            class="navbar__action-icon"
-          />
-        </button>
-
-        <button class="navbar__action-btn">
-          <img
             :src="require('@/assets/images/Cart1.svg')"
             alt="Cart"
             class="navbar__action-icon"
