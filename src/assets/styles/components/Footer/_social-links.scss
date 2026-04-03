@@ -1,0 +1,21 @@
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 8px;
+
+  &__link {
+    @include flex-center;
+    transition: transform $transition-default, opacity $transition-default;
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+  }
+}

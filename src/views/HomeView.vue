@@ -8,38 +8,14 @@
 </template>
 
 <script>
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
     DefaultLayout,
   },
 };
 </script>
 
-<style lang="scss" scoped>
-/* ========================================
-   BLOCK: .home
-   ======================================== */
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh;
-  text-align: center;
-
-  .home__title {
-    font-size: 36px;
-    font-weight: 700;
-    color: #000000;
-    margin-bottom: 12px;
-  }
-
-  .home__subtitle {
-    font-size: 16px;
-    color: #777777;
-  }
-}
-</style>
+<style lang="scss"></style>

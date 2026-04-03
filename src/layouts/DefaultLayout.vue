@@ -1,42 +1,24 @@
 <template>
   <div class="layout">
-    <TheNavbar />
+    <AppNavbar />
     <main class="layout__content">
       <slot></slot>
     </main>
-    <TheFooter />
+    <AppFooter />
   </div>
 </template>
 
 <script>
-import TheNavbar from '@/components/TheNavbar.vue';
-import TheFooter from '@/components/TheFooter.vue';
+import AppFooter from "@/components/AppFooter.vue";
+import AppNavbar from "@/components/AppNavbar.vue";
 
 export default {
-  name: 'DefaultLayout',
+  name: "DefaultLayout",
   components: {
-    TheNavbar,
-    TheFooter,
+    AppNavbar,
+    AppFooter,
   },
 };
 </script>
 
-<style lang="scss" scoped>
-/* ========================================
-   BLOCK: .layout
-   ======================================== */
-.layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
-  /* ELEMENT: __content */
-  .layout__content {
-    flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-  }
-}
-</style>
+<style lang="scss"></style>

@@ -1,0 +1,18 @@
+.home {
+  @include flex-center;
+  flex-direction: column;
+  min-height: 50vh;
+  text-align: center;
+
+  .home__title {
+    font-size: 36px;
+    font-weight: 700;
+    color: $primary-black;
+    margin-bottom: 12px;
+  }
+
+  .home__subtitle {
+    font-size: 16px;
+    color: $text-light;
+  }
+}

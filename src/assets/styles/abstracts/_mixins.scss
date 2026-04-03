@@ -1,0 +1,25 @@
+// The media queries
+@mixin mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+// Flexbox centering to use it when i want
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

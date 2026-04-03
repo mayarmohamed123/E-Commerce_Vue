@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'FooterColumn',
+  name: "FooterColumn",
   props: {
     title: {
       type: String,
@@ -17,19 +17,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/assets/styles/_variables.scss";
-
-.footer-column {
-  display: flex;
-  flex-direction: column;
-
-  &__title {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-    color: $primary-white;
-    font-family: $font-family-poppins;
-  }
-}
-</style>
+<style lang="scss"></style>
