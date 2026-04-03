@@ -5,6 +5,12 @@
   }
 }
 
+@mixin phone {
+  @include mobile {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (max-width: 768px) {
     @content;
