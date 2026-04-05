@@ -19,24 +19,19 @@
 
       <!-- Search & Actions -->
       <div class="navbar__actions">
-        <div class="navbar__search">
+        <!-- Desktop Search -->
+        <div class="navbar__search navbar__search--desktop">
           <input
             type="text"
             class="navbar__search-input"
             placeholder="What are you looking for?" />
           <button class="navbar__search-btn">
-            <img
-              :src="require('@/assets/images/Search.svg')"
-              alt="Search"
-              class="navbar__search-icon" />
+            <img :src="searchIcon" alt="Search" class="navbar__search-icon" />
           </button>
         </div>
 
         <button class="navbar__action-btn">
-          <img
-            :src="require('@/assets/images/Cart1.svg')"
-            alt="Cart"
-            class="navbar__action-icon" />
+          <img :src="cartIcon" alt="Cart" class="navbar__action-icon" />
         </button>
       </div>
 
@@ -52,6 +47,17 @@
     <div
       class="navbar__mobile-menu"
       :class="{ 'navbar__mobile-menu--open': isMenuOpen }">
+      <!-- Mobile Search -->
+      <div class="navbar__search navbar__search--mobile">
+        <input
+          type="text"
+          class="navbar__search-input"
+          placeholder="What are you looking for?" />
+        <button class="navbar__search-btn">
+          <img :src="searchIcon" alt="Search" class="navbar__search-icon" />
+        </button>
+      </div>
+
       <ul class="navbar__mobile-list">
         <li
           v-for="link in navLinks"
@@ -81,6 +87,8 @@ export default {
         { text: "About", path: "/about" },
         { text: "Sign Up", path: "/signup" },
       ],
+      searchIcon: require("@/assets/images/Search.svg"),
+      cartIcon: require("@/assets/images/Cart1.svg"),
     };
   },
   methods: {

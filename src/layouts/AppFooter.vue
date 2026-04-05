@@ -53,10 +53,7 @@
         <p class="footer__text-small">Save $3 with App New User Only</p>
         <div class="footer__app">
           <div class="footer__qr">
-            <img
-              :src="require('@/assets/images/Qr Code.svg')"
-              alt="QR Code"
-              class="footer__qr-img" />
+            <img :src="qrCodeIcon" alt="QR Code" class="footer__qr-img" />
           </div>
           <div class="footer__stores">
             <a
@@ -65,7 +62,7 @@
               :href="store.url"
               class="footer__store-link">
               <img
-                :src="require(`@/assets/images/${store.icon}`)"
+                :src="store.icon"
                 :alt="store.name"
                 class="footer__store-img" />
             </a>
@@ -87,9 +84,9 @@
 </template>
 
 <script>
-import FooterColumn from "./Footer/FooterColumn.vue";
-import FooterNewsletter from "./Footer/FooterNewsletter.vue";
-import SocialLinks from "./Footer/SocialLinks.vue";
+import FooterColumn from "@/components/Footer/FooterColumn.vue";
+import FooterNewsletter from "@/components/Footer/FooterNewsletter.vue";
+import SocialLinks from "@/components/Footer/SocialLinks.vue";
 
 export default {
   name: "TheFooter",
@@ -100,6 +97,7 @@ export default {
   },
   data() {
     return {
+      qrCodeIcon: require("@/assets/images/Qr Code.svg"),
       accountLinks: [
         { text: "My Account", path: "/account" },
         { text: "Login / Register", path: "/login" },
@@ -117,12 +115,12 @@ export default {
         {
           name: "Google Play",
           url: "#",
-          icon: "png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg",
+          icon: require("@/assets/images/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"),
         },
         {
           name: "App Store",
           url: "#",
-          icon: "download-appstore.svg",
+          icon: require("@/assets/images/download-appstore.svg"),
         },
       ],
     };

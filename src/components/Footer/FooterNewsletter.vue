@@ -8,10 +8,7 @@
         class="newsletter__subscribe-input"
         placeholder="Enter your email" />
       <button class="newsletter__subscribe-btn">
-        <img
-          :src="require('@/assets/images/icon-send.svg')"
-          alt="Send"
-          class="newsletter__subscribe-icon" />
+        <img :src="sendIcon" alt="Send" class="newsletter__subscribe-icon" />
       </button>
     </div>
   </div>
@@ -20,7 +17,14 @@
 <script>
 export default {
   name: "FooterNewsletter",
+  data() {
+    return {
+      sendIcon: require("@/assets/images/icon-send.svg"),
+    };
+  },
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>

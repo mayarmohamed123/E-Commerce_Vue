@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AppFooter from "@/components/AppFooter.vue";
+import AppFooter from "./AppFooter.vue";
 import AppNavbar from "@/components/AppNavbar.vue";
 
 export default {
