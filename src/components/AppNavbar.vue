@@ -77,7 +77,7 @@
 
 <script>
 export default {
-  name: "TheNavbar",
+  name: "AppNavbar",
   data() {
     return {
       isMenuOpen: false,
@@ -85,7 +85,6 @@ export default {
         { text: "Home", path: "/" },
         { text: "Contact", path: "/contact" },
         { text: "About", path: "/about" },
-        { text: "Sign Up", path: "/signup" },
       ],
       searchIcon: require("@/assets/images/Search.svg"),
       cartIcon: require("@/assets/images/Cart1.svg"),

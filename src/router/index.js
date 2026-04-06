@@ -21,10 +21,20 @@ const routes = [
     component: () => import('../views/AboutView.vue'),
   },
   {
-    path: '/signup',
-    name: 'SignUp',
-    component: () => import('../views/SignUpView.vue'),
+    path: '/products',
+    name: 'Products',
+    component: () => import('../views/ProductsView.vue'),
   },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: () => import('../views/ProductView.vue'),
+  },
+  {
+    path: '*',
+    name: 'NotFound', 
+    component: () => import('../views/NotFoundView.vue')
+  }
 ];
 
 const router = new VueRouter({
