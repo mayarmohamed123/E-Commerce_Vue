@@ -1,0 +1,16 @@
+@import '../../abstracts/variables';
+
+.flash-sales {
+  .product-grid {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+
+  .center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}

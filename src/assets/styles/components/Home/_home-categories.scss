@@ -1,0 +1,32 @@
+@import '../../abstracts/variables';
+
+.home-categories {
+  .category-grid {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+  }
+
+  .category-card {
+    min-width: 170px;
+    height: 145px;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $accent-red;
+      color: $primary-white;
+      border-color: $accent-red;
+    }
+  }
+
+  .category-name {
+    text-transform: capitalize;
+  }
+}

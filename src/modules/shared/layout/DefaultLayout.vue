@@ -10,7 +10,7 @@
 
 <script>
 import AppFooter from "./AppFooter.vue";
-import AppNavbar from "@/components/AppNavbar.vue";
+import AppNavbar from "./AppNavbar.vue";
 
 export default {
   name: "DefaultLayout",

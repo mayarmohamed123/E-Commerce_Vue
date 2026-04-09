@@ -84,9 +84,9 @@
 </template>
 
 <script>
-import FooterColumn from "@/components/Footer/FooterColumn.vue";
-import FooterNewsletter from "@/components/Footer/FooterNewsletter.vue";
-import SocialLinks from "@/components/Footer/SocialLinks.vue";
+import FooterColumn from "./Footer/FooterColumn.vue";
+import FooterNewsletter from "./Footer/FooterNewsletter.vue";
+import SocialLinks from "./Footer/SocialLinks.vue";
 
 export default {
   name: "TheFooter",

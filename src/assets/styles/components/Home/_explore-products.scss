@@ -1,0 +1,20 @@
+@import '../../abstracts/variables';
+
+.explore-products {
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 60px;
+    column-gap: 30px;
+    
+    &--large {
+      overflow-x: visible;
+    }
+  }
+
+  .center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}

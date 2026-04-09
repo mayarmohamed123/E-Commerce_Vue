@@ -1,0 +1,20 @@
+@import '../../abstracts/variables';
+
+.primary-button {
+  background-color: $accent-red;
+  color: $primary-white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity $transition-default;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

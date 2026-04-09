@@ -1,0 +1,42 @@
+@import '../../abstracts/variables';
+
+.section-header {
+  margin-bottom: 40px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__indicator {
+    width: 20px;
+    height: 40px;
+    background-color: $accent-red;
+    border-radius: 4px;
+  }
+
+  &__subtitle {
+    color: $accent-red;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 8px;
+  }
+}
