@@ -93,6 +93,7 @@ export default {
       isMenuOpen: false,
       navLinks: [
         { text: "Home", path: "/" },
+        { text: "Products", path: "/products" },
         { text: "Contact", path: "/contact" },
         { text: "About", path: "/about" },
       ],
