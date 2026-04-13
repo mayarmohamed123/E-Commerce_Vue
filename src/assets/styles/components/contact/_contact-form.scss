@@ -1,0 +1,103 @@
+.contact-form {
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  font-family: Poppins, sans-serif;
+  color: #000000;
+
+  &__info-section {
+    margin-bottom: 32px;
+  }
+
+  &__info-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background: #DB4444;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 16px;
+  }
+
+  &__divider {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 32px 0;
+  }
+
+  &__form {
+    margin-top: 32px;
+  }
+
+  &__input-group {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__input {
+    flex: 1;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 4px;
+    padding: 13px 16px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    
+    &:focus {
+      outline: 1px solid #DB4444;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 4px;
+    padding: 13px 16px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    margin-bottom: 16px;
+    resize: vertical;
+    
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+    
+    &:focus {
+      outline: 1px solid #DB4444;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,42 @@
+.contact-page {
+  padding: 80px 15px 140px;
+  font-family: Poppins, sans-serif;
+
+  &__breadcrumb {
+    margin-bottom: 80px;
+    font-size: 14px;
+
+    &-home {
+      opacity: 0.5;
+    }
+
+    &-separator {
+      margin: 0 8px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__image-section {
+    flex: 1;
+    background: #cfeed6; 
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__form-section {
+    flex: 1;
+  }
+}
