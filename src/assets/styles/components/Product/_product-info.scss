@@ -1,0 +1,275 @@
+@import "../../abstracts/variables";
+
+.product-details {
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 70px;
+    margin-bottom: 80px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Gallery Section
+  &__gallery {
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: 640px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 170px;
+
+    @media (max-width: 640px) {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+
+  &__thumbnail {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: $bg-light;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-default;
+    padding: 12px;
+
+    &:hover, &--active {
+      border: 1.5px solid $accent-red;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__main-image {
+    flex: 1;
+    background-color: $bg-light;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    height: 500px;
+
+    @media (max-width: 640px) {
+      height: 350px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // Info Section
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+  }
+
+  &__rating-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+
+    .reviews-count {
+      color: $text-muted;
+    }
+
+    .stock-status {
+      color: #00ff66; 
+      padding-left: 16px;
+      border-left: 1px solid #0000004d;
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 21px;
+    color: $primary-black;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: #0000004d;
+    margin: 10px 0;
+  }
+
+  &__category {
+    font-size: 16px;
+    font-weight: 500;
+    
+    span {
+      font-weight: 400;
+      color: $text-muted;
+      margin-left: 8px;
+    }
+  }
+
+  // Controls
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid #00000080;
+    border-radius: 4px;
+    height: 44px;
+
+    button {
+      width: 44px;
+      height: 100%;
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-default;
+
+      &:hover {
+        background-color: $accent-red;
+        color: white;
+      }
+      
+      &:first-child {
+        border-right: 1px solid #00000080;
+        border-radius: 4px 0 0 4px;
+      }
+      
+      &:last-child {
+        border-left: 1px solid #00000080;
+        border-radius: 0 4px 4px 0;
+      }
+    }
+
+    .value {
+      width: 80px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  &__buy-btn {
+    flex: 1;
+    height: 44px;
+    background-color: $accent-red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: darken($accent-red, 10%);
+    }
+  }
+
+  &__wishlist-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #00000080;
+    border-radius: 4px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: $bg-light;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // Delivery Boxes
+  &__delivery-info {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #00000080;
+    border-radius: 4px;
+    margin-top: 24px;
+  }
+
+  &__delivery-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 16px;
+
+    &:first-child {
+      border-bottom: 1px solid #00000080;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    .box-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .title {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .subtitle {
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -3,12 +3,14 @@ import Vuex from 'vuex';
 
 import home from '@/modules/home/store';
 import products from '@/modules/products/store';
+import cart from '@/modules/cart/store';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     home,
-    products
+    products,
+    cart,
   }
 });

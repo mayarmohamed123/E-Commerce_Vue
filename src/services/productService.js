@@ -45,6 +45,18 @@ export const productService = {
       console.error('Error fetching product categories:', error);
       throw error;
     }
+  },
+
+  async getProductsByCategory(category, limit = 4) {
+    try {
+      const response = await apiClient.get(`/products/category/${category}`, {
+        params: { limit }
+      });
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching products for category ${category}:`, error);
+      throw error;
+    }
   }
 };
 

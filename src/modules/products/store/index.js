@@ -4,6 +4,8 @@ export default {
   namespaced: true,
   state: {
     products: [],
+    currentProduct: null,
+    relatedProducts: [],
     total: 0,
     skip: 0,
     limit: 12,
@@ -13,6 +15,12 @@ export default {
   mutations: {
     SET_PRODUCTS(state, products) {
       state.products = products;
+    },
+    SET_CURRENT_PRODUCT(state, product) {
+      state.currentProduct = product;
+    },
+    SET_RELATED_PRODUCTS(state, products) {
+      state.relatedProducts = products;
     },
     APPEND_PRODUCTS(state, products) {
       state.products = [...state.products, ...products];
@@ -58,10 +66,32 @@ export default {
       } finally {
         commit('SET_LOADING', false);
       }
+    },
+    async fetchProductById({ commit }, id) {
+      commit('SET_LOADING', true);
+      try {
+        const data = await productService.getProductById(id);
+        commit('SET_CURRENT_PRODUCT', data);
+        return data;
+      } catch (error) {
+        commit('SET_ERROR', error.message);
+      } finally {
+        commit('SET_LOADING', false);
+      }
+    },
+    async fetchRelatedProducts({ commit }, category) {
+      try {
+        const data = await productService.getProductsByCategory(category, 4);
+        commit('SET_RELATED_PRODUCTS', data.products);
+      } catch (error) {
+        console.error('Error in fetchRelatedProducts:', error);
+      }
     }
   },
   getters: {
     allProducts: state => state.products,
+    currentProduct: state => state.currentProduct,
+    relatedProducts: state => state.relatedProducts,
     isLoading: state => state.isLoading,
     hasMore: state => state.products.length < state.total
   }

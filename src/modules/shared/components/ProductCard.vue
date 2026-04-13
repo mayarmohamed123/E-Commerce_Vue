@@ -1,5 +1,5 @@
 <template>
-  <div class="product-card">
+  <router-link :to="'/product/' + product.id" class="product-card">
     <div class="product-card__top">
       <div class="product-card__badges">
         <span
@@ -15,15 +15,15 @@
       </div>
 
       <div class="product-card__actions">
-        <button class="icon-button">
+        <button class="icon-button" @click.stop.prevent>
           <img
-            :src="require('@/assets/images/heart small.svg')"
+            :src="heartIcon"
             alt="heart"
             class="icon-button__icon" />
         </button>
-        <button class="icon-button">
+        <button class="icon-button" @click.stop.prevent>
           <img
-            :src="require('@/assets/images/Quick View.svg')"
+            :src="quickViewIcon"
             alt="eye"
             class="icon-button__icon" />
         </button>
@@ -38,9 +38,9 @@
 
       <div class="product-card__add-to-cart">
         <button
-          class="add-to-cart-button add-to-cart-button--black">
+          class="add-to-cart-button add-to-cart-button--black" @click.stop.prevent="handleAddToCart">
           <img
-            src="@/assets/images/Cart1.svg"
+            :src="cartIcon"
             alt="cart"
             class="add-to-cart-button__icon" />
           <span class="add-to-cart-button__text">Add To Cart</span>
@@ -56,10 +56,11 @@
         :discount="product.discountPercentage ? Math.round(product.discountPercentage) : null" />
       <StarRating :rating="product.rating" :reviews="product.reviews ? product.reviews.length : 0" />
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import PriceDisplay from "./PriceDisplay.vue";
 import StarRating from "./StarRating.vue";
 
@@ -81,6 +82,19 @@ export default {
     showNewBadge: {
       type: Boolean,
       default: false,
+    },
+  },
+  data() {
+    return {
+      heartIcon: require("@/assets/images/heart small.svg"),
+      quickViewIcon: require("@/assets/images/Quick View.svg"),
+      cartIcon: require("@/assets/images/Cart1.svg"),
+    };
+  },
+  methods: {
+    ...mapActions("cart", ["addToCart"]),
+    handleAddToCart() {
+      this.addToCart(this.product);
     },
   },
 };

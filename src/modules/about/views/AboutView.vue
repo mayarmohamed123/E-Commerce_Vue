@@ -1,13 +1,16 @@
 <template>
   <div class="about">
-    <h1>About Us</h1>
-    <p>Welcome to Exclusive. Learn more about our mission and values.</p>
+    <AboutStory />
   </div>
 </template>
 
 <script>
+import AboutStory from "../components/AboutStory.vue";
 export default {
   name: "AboutView",
+  components: {
+    AboutStory,
+  },
 };
 </script>
 

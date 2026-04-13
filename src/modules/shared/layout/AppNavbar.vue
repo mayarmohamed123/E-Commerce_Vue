@@ -30,8 +30,9 @@
           </button>
         </div>
 
-        <button class="navbar__action-btn">
+        <button class="navbar__action-btn" @click="toggleCart">
           <img :src="cartIcon" alt="Cart" class="navbar__action-icon" />
+          <span v-if="cartItemCount > 0" class="navbar__badge">{{ cartItemCount }}</span>
         </button>
       </div>
 
@@ -72,12 +73,21 @@
         </li>
       </ul>
     </div>
+
+    <!-- Sliding Cart -->
+    <SlidingCart />
   </nav>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import SlidingCart from "@/modules/cart/components/SlidingCart.vue";
+
 export default {
   name: "AppNavbar",
+  components: {
+    SlidingCart,
+  },
   data() {
     return {
       isMenuOpen: false,
@@ -90,7 +100,14 @@ export default {
       cartIcon: require("@/assets/images/Cart1.svg"),
     };
   },
+  computed: {
+    ...mapGetters("cart", ["cartItemCount"]),
+  },
+  created() {
+    this.fetchCart();
+  },
   methods: {
+    ...mapActions("cart", ["toggleCart", "fetchCart"]),
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen;
     },

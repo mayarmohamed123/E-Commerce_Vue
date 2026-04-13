@@ -1,4 +1,4 @@
-import productService from '@/services/productService';
+import productService from "@/services/productService";
 
 export default {
   namespaced: true,
@@ -24,34 +24,34 @@ export default {
     },
     SET_ERROR(state, error) {
       state.error = error;
-    }
+    },
   },
   actions: {
     async fetchHomeData({ commit }) {
-      commit('SET_LOADING', true);
+      commit("SET_LOADING", true);
       try {
         // Fetch 4 products for Flash Sales
         const flashSalesData = await productService.getProductsPaginated(4, 0);
-        commit('SET_FLASH_SALES', flashSalesData.products);
+        commit("SET_FLASH_SALES", flashSalesData.products);
 
         // Fetch categories
         const categoriesData = await productService.getProductCategories();
-        commit('SET_CATEGORIES', categoriesData.slice(0, 10)); // Take top 10 categories mapping to visual squares
+        commit("SET_CATEGORIES", categoriesData.slice(0, 5)); // Take top 10 categories mapping to visual squares
 
         // Fetch 8 products for Explore Products
         const exploreData = await productService.getProductsPaginated(8, 20); // skip 20 to get different products
-        commit('SET_EXPLORE_PRODUCTS', exploreData.products);
+        commit("SET_EXPLORE_PRODUCTS", exploreData.products);
       } catch (error) {
-        commit('SET_ERROR', error.message);
+        commit("SET_ERROR", error.message);
       } finally {
-        commit('SET_LOADING', false);
+        commit("SET_LOADING", false);
       }
-    }
+    },
   },
   getters: {
-    flashSales: state => state.flashSales,
-    categories: state => state.categories,
-    exploreProducts: state => state.exploreProducts,
-    isLoading: state => state.isLoading
-  }
+    flashSales: (state) => state.flashSales,
+    categories: (state) => state.categories,
+    exploreProducts: (state) => state.exploreProducts,
+    isLoading: (state) => state.isLoading,
+  },
 };

@@ -8,10 +8,10 @@
       <h2 class="section-header__title">{{ title }}</h2>
       <div v-if="showArrows" class="section-header__arrows">
         <button class="icon-button" @click="$emit('prev')">
-          <img :src="require('@/assets/images/icons_arrow-left.svg')" alt="prev" class="icon-button__icon" />
+          <img :src="arrowLeftIcon" alt="prev" class="icon-button__icon" />
         </button>
         <button class="icon-button" @click="$emit('next')">
-          <img :src="require('@/assets/images/icons arrow-right.svg')" alt="next" class="icon-button__icon" />
+          <img :src="arrowRightIcon" alt="next" class="icon-button__icon" />
         </button>
       </div>
     </div>
@@ -34,6 +34,12 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  data() {
+    return {
+      arrowLeftIcon: require("@/assets/images/icons_arrow-left.svg"),
+      arrowRightIcon: require("@/assets/images/icons arrow-right.svg"),
+    };
   },
 };
 </script>
