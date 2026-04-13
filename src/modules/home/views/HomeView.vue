@@ -4,7 +4,7 @@
       <FlashSales :products="flashSales" />
       <HomeCategories :categories="categories" />
       <ExploreProducts :products="exploreProducts" />
-      <HomeFeatures />
+      <AppServices />
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@ import { mapState, mapActions } from 'vuex';
 import FlashSales from '../components/FlashSales.vue';
 import HomeCategories from '../components/HomeCategories.vue';
 import ExploreProducts from '../components/ExploreProducts.vue';
-import HomeFeatures from '../components/HomeFeatures.vue';
+import AppServices from '../../shared/components/AppServices.vue';
 
 export default {
   name: "HomeView",
@@ -22,7 +22,7 @@ export default {
     FlashSales,
     HomeCategories,
     ExploreProducts,
-    HomeFeatures
+    AppServices
   },
   computed: {
     ...mapState('home', ['flashSales', 'categories', 'exploreProducts', 'isLoading'])

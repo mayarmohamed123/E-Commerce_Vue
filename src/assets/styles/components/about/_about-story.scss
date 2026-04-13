@@ -1,0 +1,54 @@
+.about-story {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__container {
+    margin-top: 80px;
+    margin-bottom: 240px;
+    padding: 0 15px;
+  }
+
+  &__breadcrumb {
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: #000;
+
+    &-home {
+      opacity: 0.5;
+    }
+
+    &-separator {
+      margin: 0 8px;
+    }
+  }
+
+  &__content {
+    max-width: 525px;
+  }
+
+  &__title {
+    font-size: 54px;
+    font-weight: 600;
+    line-height: 64px;
+    margin-bottom: 40px;
+    font-family: Inter, sans-serif;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    line-height: 26px;
+    font-family: Poppins, sans-serif;
+    
+    &:first-of-type {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__image {
+    width: 705px;
+    height: 609px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
