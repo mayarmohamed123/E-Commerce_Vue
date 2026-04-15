@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/product/' + product.id" class="product-card">
+  <router-link :to="{ path: '/product/' + product.id, query: { title: product.title } }" class="product-card">
     <div class="product-card__top">
       <div class="product-card__badges">
         <span
