@@ -1,5 +1,8 @@
 import cartService from '@/services/cartService';
 
+const CART_UPDATE_DEBOUNCE_MS = 500;
+let cartUpdateDebounceTimer = null;
+
 export default {
   namespaced: true,
   state: {
@@ -84,9 +87,35 @@ export default {
     closeCart({ commit }) {
       commit('CLOSE_CART');
     },
-    updateQuantity({ commit }, { productId, quantity }) {
+    updateQuantity({ commit, dispatch }, { productId, quantity }) {
       if (quantity < 1) return;
       commit('UPDATE_ITEM_QUANTITY', { productId, quantity });
+      dispatch('debouncedSyncCart');
+    },
+    debouncedSyncCart({ dispatch }) {
+      if (cartUpdateDebounceTimer) {
+        clearTimeout(cartUpdateDebounceTimer);
+      }
+
+      cartUpdateDebounceTimer = setTimeout(() => {
+        dispatch('syncCartToBackend');
+      }, CART_UPDATE_DEBOUNCE_MS);
+    },
+    async syncCartToBackend({ state, commit }) {
+      // No backend cart yet, skip sync.
+      if (!state.cart || !state.cart.id) return;
+
+      const productsPayload = state.items.map((item) => ({
+        id: item.id,
+        quantity: item.quantity
+      }));
+
+      try {
+        const updatedCart = await cartService.updateCart(state.cart.id, productsPayload);
+        commit('SET_CART', updatedCart);
+      } catch (error) {
+        commit('SET_ERROR', error.message);
+      }
     },
     removeItem({ commit }, productId) {
       commit('REMOVE_ITEM', productId);
