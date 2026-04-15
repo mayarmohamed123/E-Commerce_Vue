@@ -30,6 +30,9 @@
           :product="product"
           :showNewBadge="product.id % 3 === 0" 
         />
+        <template v-if="isLoading">
+          <CardSkeleton v-for="i in 8" :key="'skeleton-' + i" />
+        </template>
       </div>
 
       <div class="products-page__actions" v-if="hasMore">
@@ -50,6 +53,7 @@ import { mapGetters, mapActions } from 'vuex';
 import ProductCard from '@/modules/shared/components/ProductCard.vue';
 import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue';
 import AppBreadcrumb from '@/modules/shared/components/AppBreadcrumb.vue';
+import CardSkeleton from '@/modules/shared/components/CardSkeleton.vue';
 
 export default {
   name: "ProductsView",
@@ -57,6 +61,7 @@ export default {
     ProductCard,
     PrimaryButton,
     AppBreadcrumb,
+    CardSkeleton,
   },
   data() {
     return {

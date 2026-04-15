@@ -2,9 +2,9 @@
   <div class="home">
     <div class="container">
       <HomeSilder />
-      <FlashSales :products="flashSales" />
+      <FlashSales :products="flashSales" :isLoading="isLoading" />
       <HomeCategories :categories="categories" />
-      <ExploreProducts :products="exploreProducts" />
+      <ExploreProducts :products="exploreProducts" :isLoading="isLoading" />
       <AppServices />
     </div>
   </div>
