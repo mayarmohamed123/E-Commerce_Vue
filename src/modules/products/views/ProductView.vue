@@ -1,11 +1,7 @@
 <template>
   <div class="product-details">
     <div class="container" v-if="currentProduct">
-      <!-- Breadcrumbs -->
-      <div class="product-details__breadcrumbs">
-        <span>Account / {{ currentProduct.category }} / </span>
-        <span class="active">{{ currentProduct.title }}</span>
-      </div>
+      <AppBreadcrumb :items="breadcrumbItems" />
 
       <!-- Main Product Info component -->
       <ProductInfo :product="currentProduct" />
@@ -29,15 +25,24 @@
 import { mapGetters, mapActions } from "vuex";
 import ProductInfo from "../components/ProductInfo.vue";
 import RelatedProducts from "../components/RelatedProducts.vue";
+import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 
 export default {
   name: "ProductView",
   components: {
     ProductInfo,
     RelatedProducts,
+    AppBreadcrumb,
   },
   computed: {
     ...mapGetters("products", ["currentProduct", "isLoading"]),
+    breadcrumbItems() {
+      return [
+        { label: "Home", to: "/" },
+        { label: "Products", to: "/products" },
+        { label: this.currentProduct ? this.currentProduct.title : "..." },
+      ];
+    },
   },
   watch: {
     '$route.params.id': {
@@ -55,4 +60,4 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss"></style>

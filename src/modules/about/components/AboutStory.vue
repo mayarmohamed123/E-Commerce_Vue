@@ -1,11 +1,7 @@
 <template>
   <div class="about-story__container">
     <!-- Breadcrumb -->
-    <div class="about-story__breadcrumb">
-      <span class="about-story__breadcrumb-home">Home</span> 
-      <span class="about-story__breadcrumb-separator">/</span> 
-      <span>About</span>
-    </div>
+    <AppBreadcrumb :items="breadcrumbItems" />
 
     <div class="about-story">
       <div class="about-story__content">
@@ -33,13 +29,21 @@
 
 <script>
 import storyImg from "@/assets/images/Side Image.webp";
+import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 
 export default {
   name: "AboutStory",
+  components: {
+    AppBreadcrumb,
+  },
   data() {
     return {
-      storyImage: storyImg
+      storyImage: storyImg,
+      breadcrumbItems: [
+        { label: "Home", to: "/" },
+        { label: "About" },
+      ],
     };
-  }
+  },
 };
 </script>

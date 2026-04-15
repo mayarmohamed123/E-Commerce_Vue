@@ -2,21 +2,6 @@
   padding: 80px 15px 140px;
   font-family: Poppins, sans-serif;
 
-  &__breadcrumb {
-    margin-bottom: 120px;
-    font-size: 14px;
-    
-    &-home {
-      opacity: 0.5;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    &-separator {
-      margin: 0 8px;
-    }
-  }
 
   &__content {
     display: flex;

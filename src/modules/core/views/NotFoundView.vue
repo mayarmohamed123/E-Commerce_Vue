@@ -1,10 +1,6 @@
 <template>
   <div class="not-found-page container">
-    <div class="not-found-page__breadcrumb">
-      <router-link to="/" class="not-found-page__breadcrumb-home">Home</router-link>
-      <span class="not-found-page__breadcrumb-separator">/</span>
-      <span>404 Error</span>
-    </div>
+    <AppBreadcrumb :items="breadcrumbItems" />
 
     <div class="not-found-page__content">
       <h1 class="not-found-page__title">404 Not Found</h1>
@@ -18,11 +14,21 @@
 
 <script>
 import PrimaryButton from "@/modules/shared/components/PrimaryButton.vue";
+import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 
 export default {
   name: "NotFoundView",
   components: {
     PrimaryButton,
+    AppBreadcrumb,
+  },
+  data() {
+    return {
+      breadcrumbItems: [
+        { label: "Home", to: "/" },
+        { label: "404 Error" },
+      ],
+    };
   },
 };
 </script>

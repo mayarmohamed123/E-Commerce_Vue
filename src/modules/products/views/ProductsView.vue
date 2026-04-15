@@ -1,9 +1,7 @@
 <template>
   <div class="products-page">
     <div class="container">
-      <div class="products-page__breadcrumbs">
-        <span>Home / </span><span class="active">Explore Our Products</span>
-      </div>
+      <AppBreadcrumb :items="breadcrumbItems" />
 
       <div class="products-page__header">
         <h2 class="products-page__title">Explore Our Products</h2>
@@ -51,12 +49,14 @@
 import { mapGetters, mapActions } from 'vuex';
 import ProductCard from '@/modules/shared/components/ProductCard.vue';
 import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue';
+import AppBreadcrumb from '@/modules/shared/components/AppBreadcrumb.vue';
 
 export default {
   name: "ProductsView",
   components: {
     ProductCard,
-    PrimaryButton
+    PrimaryButton,
+    AppBreadcrumb,
   },
   data() {
     return {
@@ -68,7 +68,11 @@ export default {
         "Name A-Z",
         "Name Z-A",
         "Discount"
-      ]
+      ],
+      breadcrumbItems: [
+        { label: "Home", to: "/" },
+        { label: "Products" },
+      ],
     };
   },
   computed: {

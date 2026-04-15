@@ -1,10 +1,6 @@
 <template>
   <div class="contact-page container">
-    <div class="contact-page__breadcrumb">
-      <span class="contact-page__breadcrumb-home">Home</span>
-      <span class="contact-page__breadcrumb-separator">/</span>
-      <span>Contact</span>
-    </div>
+    <AppBreadcrumb :items="breadcrumbItems" />
 
     <div class="contact-page__grid">
       <div class="contact-page__image-section">
@@ -20,16 +16,22 @@
 
 <script>
 import ContactForm from "../components/ContactForm.vue";
-import defaultHeroImage from "@/assets/images/Frame 760.webp"; 
+import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
+import defaultHeroImage from "@/assets/images/Frame 760.webp";
 export default {
   name: "ContactView",
   components: {
     ContactForm,
+    AppBreadcrumb,
   },
   data() {
     return {
-      heroImage: defaultHeroImage
+      heroImage: defaultHeroImage,
+      breadcrumbItems: [
+        { label: "Home", to: "/" },
+        { label: "Contact" },
+      ],
     };
-  }
+  },
 };
 </script>

@@ -9,14 +9,5 @@
     padding: 0 $padding-container;
   }
 
-  &__breadcrumbs {
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 14px;
-    color: $text-muted;
-
-    .active {
-      color: $primary-black;
-    }
-  }
 }
+
