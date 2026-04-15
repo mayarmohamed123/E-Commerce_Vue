@@ -1,5 +1,4 @@
-@import "abstracts/index";
-@import "base/index";
-@import "layout/index";
-@import "components/index";
-@import "pages/index";
+@use "base";
+@use "layout";
+@use "components";
+@use "pages";

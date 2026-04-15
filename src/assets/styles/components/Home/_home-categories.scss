@@ -1,4 +1,5 @@
-@import '../../abstracts/variables';
+
+@use "../../abstracts" as *;
 
 .home-categories {
   .category-grid {

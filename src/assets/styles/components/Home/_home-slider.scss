@@ -1,4 +1,5 @@
-@import '../../abstracts/variables';
+
+@use "../../abstracts" as *;
 
 .home-hero-slide {
   position: relative;

@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 body {
   color: $text-gray;
   background-color: $primary-white;

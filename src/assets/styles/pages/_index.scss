@@ -1,6 +1,6 @@
-@import "home";
-@import "products";
-@import "product-details";
-@import "about";
-@import "contact";
-@import "not-found";
+@forward "home";
+@forward "products";
+@forward "product-details";
+@forward "about";
+@forward "contact";
+@forward "not-found";

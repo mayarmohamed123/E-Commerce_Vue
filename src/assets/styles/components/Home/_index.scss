@@ -1,4 +1,4 @@
-@import "home-slider";
-@import "flash-sales";
-@import "home-categories";
-@import "explore-products";
+@forward "home-slider";
+@forward "home-categories";
+@forward "flash-sales";
+@forward "explore-products";

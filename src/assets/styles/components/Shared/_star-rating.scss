@@ -1,4 +1,5 @@
-@import "../../abstracts/_variables.scss";
+
+@use "../../abstracts" as *;
 
 .star-rating {
   display: flex;

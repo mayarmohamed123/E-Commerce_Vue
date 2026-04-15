@@ -1,4 +1,5 @@
-@import "../../abstracts/variables";
+@use "sass:color";
+@use "../../abstracts" as *;
 
 /* ========================================
    Sliding Cart Overlay
@@ -259,7 +260,7 @@
     transition: background-color $transition-default;
 
     &:hover {
-      background-color: darken($accent-red, 10%);
+      background-color: color.adjust($accent-red, $lightness: -10%);
     }
   }
 }
