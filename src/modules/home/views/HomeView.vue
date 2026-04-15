@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
+      <HomeSilder />
       <FlashSales :products="flashSales" />
       <HomeCategories :categories="categories" />
       <ExploreProducts :products="exploreProducts" />
@@ -15,10 +16,12 @@ import FlashSales from '../components/FlashSales.vue';
 import HomeCategories from '../components/HomeCategories.vue';
 import ExploreProducts from '../components/ExploreProducts.vue';
 import AppServices from '../../shared/components/AppServices.vue';
+import HomeSilder from '../components/HomeSilder.vue';
 
 export default {
   name: "HomeView",
   components: {
+    HomeSilder,
     FlashSales,
     HomeCategories,
     ExploreProducts,
