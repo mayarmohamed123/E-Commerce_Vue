@@ -102,7 +102,6 @@ export default {
       }, CART_UPDATE_DEBOUNCE_MS);
     },
     async syncCartToBackend({ state, commit }) {
-      // No backend cart yet, skip sync.
       if (!state.cart || !state.cart.id) return;
 
       const productsPayload = state.items.map((item) => ({

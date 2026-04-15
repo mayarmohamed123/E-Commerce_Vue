@@ -1,0 +1,46 @@
+.not-found-page {
+  padding: 80px 15px 140px;
+  font-family: Poppins, sans-serif;
+
+  &__breadcrumb {
+    margin-bottom: 120px;
+    font-size: 14px;
+    
+    &-home {
+      opacity: 0.5;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &-separator {
+      margin: 0 8px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 110px;
+    font-weight: 500;
+    line-height: 115px;
+    letter-spacing: 0.03em;
+    margin-bottom: 40px;
+    font-family: Inter, sans-serif;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 80px;
+  }
+
+  &__button {
+    padding: 16px 48px;
+  }
+}
