@@ -17,32 +17,7 @@
     font-weight: 500;
   }
 
-  &__sort {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
 
-  &__sort-label {
-    font-size: 14px;
-    color: $text-gray;
-  }
-
-  &__sort-select {
-    border: 1px solid $border-color;
-    border-radius: 4px;
-    padding: 10px 12px;
-    font-size: 14px;
-    color: $primary-black;
-    background-color: $primary-white;
-    outline: none;
-    cursor: pointer;
-    transition: border-color $transition-default;
-
-    &:focus {
-      border-color: $accent-red;
-    }
-  }
 
   &__grid {
     display: grid;

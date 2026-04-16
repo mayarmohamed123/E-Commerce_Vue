@@ -15,5 +15,9 @@
       "ScriptHost"
     ],
     "ignoreDeprecations": "5.0"
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

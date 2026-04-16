@@ -5,22 +5,7 @@
 
       <div class="products-page__header">
         <h2 class="products-page__title">Explore Our Products</h2>
-        <div class="products-page__sort">
-          <label for="products-sort" class="products-page__sort-label">Sort by</label>
-          <select
-            id="products-sort"
-            v-model="selectedSort"
-            class="products-page__sort-select"
-          >
-            <option
-              v-for="option in sortOptions"
-              :key="option"
-              :value="option"
-            >
-              {{ option }}
-            </option>
-          </select>
-        </div>
+        <SortDropdown v-model="selectedSort" :options="sortOptions" />
       </div>
 
       <div class="products-page__grid">
@@ -54,6 +39,7 @@ import ProductCard from '@/modules/shared/components/ProductCard.vue';
 import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue';
 import AppBreadcrumb from '@/modules/shared/components/AppBreadcrumb.vue';
 import CardSkeleton from '@/modules/shared/components/CardSkeleton.vue';
+import SortDropdown from '../components/SortDropdown.vue';
 
 export default {
   name: "ProductsView",
@@ -62,6 +48,7 @@ export default {
     PrimaryButton,
     AppBreadcrumb,
     CardSkeleton,
+    SortDropdown,
   },
   data() {
     return {
