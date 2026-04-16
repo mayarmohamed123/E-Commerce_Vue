@@ -6,7 +6,7 @@ const localVue = createLocalVue();
 localVue.use(VueRouter);
 
 describe('Vue Router', () => {
-  it('Should have the correct routes for Sprint 1 verification', () => {
+  it('Should have the correct routes for verification', () => {
     const routes = router.options.routes;
     
     expect(routes.find(r => r.name === 'Home').path).toBe('/');
