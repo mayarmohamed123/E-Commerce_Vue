@@ -103,13 +103,21 @@ export default {
       }
     }
   },
-  created() {
-    this.loadProducts();
+  // Vue Router in-component navigation guards
+  //
+  // beforeRouteEnter – called before the component is created.
+  // `this` is NOT available yet, so we use the next(vm => ...) callback.
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.loadProducts(to.query.category);
+    });
   },
-  watch: {
-    '$route.query.category'(newCategory) {
-      this.loadProducts(newCategory);
-    }
+  // beforeRouteUpdate – called when the route changes but this component
+  // is reused (e.g. navigating between categories via query param).
+  // `this` IS available here.
+  beforeRouteUpdate(to, from, next) {
+    this.loadProducts(to.query.category);
+    next();
   },
   methods: {
     ...mapActions('products', ['fetchInitialProducts', 'loadMoreProducts', 'fetchProductsByCategory']),

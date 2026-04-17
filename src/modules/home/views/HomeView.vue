@@ -30,8 +30,12 @@ export default {
   computed: {
     ...mapState('home', ['flashSales', 'categories', 'exploreProducts', 'isLoading'])
   },
-  created() {
-    this.fetchHomeData();
+  // beforeRouteEnter – fires before the component is created.
+  // `this` is not available; use next(vm => ...) to access the instance.
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.fetchHomeData();
+    });
   },
   methods: {
     ...mapActions('home', ['fetchHomeData'])
