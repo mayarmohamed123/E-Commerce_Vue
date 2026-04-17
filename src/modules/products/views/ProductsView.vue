@@ -4,7 +4,7 @@
       <AppBreadcrumb :items="breadcrumbItems" />
 
       <div class="products-page__header">
-        <h2 class="products-page__title">Explore Our Products</h2>
+        <h2 class="products-page__title">{{ pageTitle }}</h2>
         <SortDropdown v-model="selectedSort" :options="sortOptions" />
       </div>
 
@@ -61,14 +61,25 @@ export default {
         "Name Z-A",
         "Discount"
       ],
-      breadcrumbItems: [
-        { label: "Home", to: "/" },
-        { label: "Products" },
-      ],
     };
   },
   computed: {
-    ...mapGetters('products', ['allProducts', 'isLoading', 'hasMore']),
+    ...mapGetters('products', ['allProducts', 'isLoading', 'hasMore', 'activeCategory']),
+    pageTitle() {
+      return this.activeCategory
+        ? this.activeCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+        : 'Explore Our Products';
+    },
+    breadcrumbItems() {
+      const items = [{ label: 'Home', to: '/' }];
+      if (this.activeCategory) {
+        items.push({ label: 'Products', to: '/products' });
+        items.push({ label: this.activeCategory.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) });
+      } else {
+        items.push({ label: 'Products' });
+      }
+      return items;
+    },
     sortedProducts() {
       const productsCopy = [...this.allProducts];
 
@@ -93,10 +104,22 @@ export default {
     }
   },
   created() {
-    this.fetchInitialProducts();
+    this.loadProducts();
+  },
+  watch: {
+    '$route.query.category'(newCategory) {
+      this.loadProducts(newCategory);
+    }
   },
   methods: {
-    ...mapActions('products', ['fetchInitialProducts', 'loadMoreProducts'])
+    ...mapActions('products', ['fetchInitialProducts', 'loadMoreProducts', 'fetchProductsByCategory']),
+    loadProducts(category = this.$route.query.category) {
+      if (category) {
+        this.fetchProductsByCategory(category);
+      } else {
+        this.fetchInitialProducts();
+      }
+    }
   }
 };
 </script>

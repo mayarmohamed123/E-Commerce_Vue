@@ -11,6 +11,7 @@ export default {
     limit: 12,
     isLoading: false,
     error: null,
+    activeCategory: null,
   },
   mutations: {
     SET_PRODUCTS(state, products) {
@@ -36,14 +37,32 @@ export default {
     },
     SET_ERROR(state, error) {
       state.error = error;
+    },
+    SET_CATEGORY(state, category) {
+      state.activeCategory = category;
     }
   },
   actions: {
     async fetchInitialProducts({ commit, state }) {
       commit('SET_LOADING', true);
       commit('SET_SKIP', 0);
+      commit('SET_CATEGORY', null);
       try {
         const data = await productService.getProductsPaginated(state.limit, 0);
+        commit('SET_PRODUCTS', data.products);
+        commit('SET_TOTAL', data.total);
+      } catch (error) {
+        commit('SET_ERROR', error.message);
+      } finally {
+        commit('SET_LOADING', false);
+      }
+    },
+    async fetchProductsByCategory({ commit }, category) {
+      commit('SET_LOADING', true);
+      commit('SET_SKIP', 0);
+      commit('SET_CATEGORY', category);
+      try {
+        const data = await productService.getProductsByCategory(category, 200);
         commit('SET_PRODUCTS', data.products);
         commit('SET_TOTAL', data.total);
       } catch (error) {
@@ -93,6 +112,7 @@ export default {
     currentProduct: state => state.currentProduct,
     relatedProducts: state => state.relatedProducts,
     isLoading: state => state.isLoading,
-    hasMore: state => state.products.length < state.total
+    activeCategory: state => state.activeCategory,
+    hasMore: state => !state.activeCategory && state.products.length < state.total
   }
 };
