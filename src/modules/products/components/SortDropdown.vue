@@ -4,7 +4,7 @@
     <select
       id="products-sort"
       :value="value"
-      @input="$emit('input', $event.target.value)"
+      @change="$emit('input', $event.target.value)"
       class="products-page__sort-select"
     >
       <option
