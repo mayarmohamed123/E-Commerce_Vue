@@ -6,4 +6,3 @@
 
 export { useCartStore } from "@/modules/cart/stores/cart";
 export { useProductsStore } from "@/modules/products/stores/products";
-export { useHomeStore } from "@/modules/home/stores/home";
