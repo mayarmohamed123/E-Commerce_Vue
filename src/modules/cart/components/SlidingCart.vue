@@ -19,7 +19,7 @@
         <!-- Cart Items -->
         <div class="sliding-cart__items">
           <div
-            v-for="item in cartItems"
+            v-for="item in items"
             :key="item.id"
             class="sliding-cart__item"
             :class="{
@@ -62,7 +62,7 @@
           </div>
 
           <!-- Empty State -->
-          <div v-if="cartItems.length === 0" class="sliding-cart__empty">
+          <div v-if="items.length === 0" class="sliding-cart__empty">
             <p>Your cart is empty.</p>
           </div>
         </div>
@@ -110,8 +110,8 @@ const cancelIconSmall = cancelIcon;
 
 /** Reactive store items with preserved reactivity */
 const {
-  cartItems,
-  cartOpen: isCartOpen,
+  items,
+  isCartOpen,
   cartSubtotal,
   cartTotal,
 } = storeToRefs(cartStore);

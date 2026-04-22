@@ -41,8 +41,8 @@ const router = useRouter();
 const productsStore = useProductsStore();
 
 /** Store getters as computed refs */
-const currentProduct = computed(() => productsStore.current);
-const isLoading = computed(() => productsStore.loading);
+const currentProduct = computed(() => productsStore.currentProduct);
+const isLoading = computed(() => productsStore.isLoading);
 
 /** Breadcrumb items based on current product */
 const breadcrumbItems = computed((): BreadcrumbItem[] => {

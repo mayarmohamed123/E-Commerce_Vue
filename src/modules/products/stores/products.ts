@@ -32,21 +32,6 @@ export const useProductsStore = defineStore("products", {
   }),
 
   getters: {
-    /** All products in catalog */
-    allProducts: (state): Product[] => state.products,
-
-    /** Currently viewed product */
-    current: (state): Product | null => state.currentProduct,
-
-    /** Related products for current product */
-    related: (state): Product[] => state.relatedProducts,
-
-    /** Loading state */
-    loading: (state): boolean => state.isLoading,
-
-    /** Active category filter */
-    category: (state): string | null => state.activeCategory,
-
     /** Whether more products can be loaded */
     hasMore: (state): boolean =>
       !state.activeCategory && state.products.length < state.total,

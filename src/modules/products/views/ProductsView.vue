@@ -73,10 +73,10 @@ const sortOptions: string[] = [
 ];
 
 /** Computed store properties */
-const allProducts = computed(() => productsStore.allProducts);
-const isLoading = computed(() => productsStore.loading);
+const allProducts = computed(() => productsStore.products);
+const isLoading = computed(() => productsStore.isLoading);
 const hasMore = computed(() => productsStore.hasMore);
-const activeCategory = computed(() => productsStore.category);
+const activeCategory = computed(() => productsStore.activeCategory);
 
 /** Dynamic page title derived from current category filter */
 const pageTitle = computed((): string => {

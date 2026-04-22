@@ -29,7 +29,7 @@ const props = defineProps<Props>();
 const productsStore = useProductsStore();
 
 /** Related products from store - using storeToRefs for reactivity */
-const { related: relatedProducts } = storeToRefs(productsStore);
+const { relatedProducts } = storeToRefs(productsStore);
 
 /** Watch category changes and fetch related products */
 watch(
