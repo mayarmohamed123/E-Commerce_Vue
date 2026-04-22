@@ -27,23 +27,29 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import storyImg from "@/assets/images/Side Image.webp";
 import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 
-export default {
-  name: "AboutStory",
-  components: {
-    AppBreadcrumb,
-  },
-  data() {
-    return {
-      storyImage: storyImg,
-      breadcrumbItems: [
-        { label: "Home", to: "/" },
-        { label: "About" },
-      ],
-    };
-  },
-};
+/**
+ * AboutStory Component
+ * Displays the company story and mission statement with an accompanying image.
+ */
+
+/** Breadcrumb item type */
+interface BreadcrumbItem {
+  /** Label for the breadcrumb item */
+  label: string;
+  /** Optional link path for navigation */
+  to?: string;
+}
+
+/** Story image asset */
+const storyImage: string = storyImg;
+
+/** Breadcrumb navigation items */
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: "Home", to: "/" },
+  { label: "About" },
+];
 </script>

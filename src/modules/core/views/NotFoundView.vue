@@ -12,25 +12,20 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import PrimaryButton from "@/modules/shared/components/PrimaryButton.vue";
 import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 
-export default {
-  name: "NotFoundView",
-  components: {
-    PrimaryButton,
-    AppBreadcrumb,
-  },
-  data() {
-    return {
-      breadcrumbItems: [
-        { label: "Home", to: "/" },
-        { label: "404 Error" },
-      ],
-    };
-  },
-};
+/**
+ * NotFoundView Component
+ * Standard 404 error page displayed when a route is not matched.
+ */
+
+/** Breadcrumb navigation items for the 404 page */
+const breadcrumbItems = [
+  { label: "Home", to: "/" },
+  { label: "404 Error" },
+];
 </script>
 
 <style lang="scss"></style>

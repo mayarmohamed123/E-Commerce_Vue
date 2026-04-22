@@ -83,49 +83,58 @@
   </footer>
 </template>
 
-<script>
+<script setup lang="ts">
+import { ref } from "vue";
 import FooterColumn from "./Footer/FooterColumn.vue";
 import FooterNewsletter from "./Footer/FooterNewsletter.vue";
 import SocialLinks from "./Footer/SocialLinks.vue";
+import qrCodeIcon from "@/assets/images/Qr Code.svg";
+import googlePlayIcon from "@/assets/images/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg";
+import appStoreIcon from "@/assets/images/download-appstore.svg";
 
-export default {
-  name: "TheFooter",
-  components: {
-    FooterColumn,
-    FooterNewsletter,
-    SocialLinks,
+/** Link interface */
+interface Link {
+  text: string;
+  path: string;
+}
+
+/** Store link interface */
+interface StoreLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+/** Links for account column */
+const accountLinks = ref<Link[]>([
+  { text: "My Account", path: "/account" },
+  { text: "Login / Register", path: "/login" },
+  { text: "Cart", path: "/cart" },
+  { text: "Wishlist", path: "/wishlist" },
+  { text: "Shop", path: "/shop" },
+]);
+
+/** Links for quick link column */
+const quickLinks = ref<Link[]>([
+  { text: "Privacy Policy", path: "/privacy" },
+  { text: "Terms Of Use", path: "/terms" },
+  { text: "FAQ", path: "/faq" },
+  { text: "Contact", path: "/contact" },
+]);
+
+/** Links for store downloads */
+const storeLinks = ref<StoreLink[]>([
+  {
+    name: "Google Play",
+    url: "#",
+    icon: googlePlayIcon,
   },
-  data() {
-    return {
-      qrCodeIcon: require("@/assets/images/Qr Code.svg"),
-      accountLinks: [
-        { text: "My Account", path: "/account" },
-        { text: "Login / Register", path: "/login" },
-        { text: "Cart", path: "/cart" },
-        { text: "Wishlist", path: "/wishlist" },
-        { text: "Shop", path: "/shop" },
-      ],
-      quickLinks: [
-        { text: "Privacy Policy", path: "/privacy" },
-        { text: "Terms Of Use", path: "/terms" },
-        { text: "FAQ", path: "/faq" },
-        { text: "Contact", path: "/contact" },
-      ],
-      storeLinks: [
-        {
-          name: "Google Play",
-          url: "#",
-          icon: require("@/assets/images/png-transparent-google-play-store-logo-google-play-app-store-android-wallets-text-label-logo.svg"),
-        },
-        {
-          name: "App Store",
-          url: "#",
-          icon: require("@/assets/images/download-appstore.svg"),
-        },
-      ],
-    };
+  {
+    name: "App Store",
+    url: "#",
+    icon: appStoreIcon,
   },
-};
+]);
 </script>
 
 <style lang="scss"></style>

@@ -10,39 +10,33 @@
           v-for="product in products"
           :key="product.id"
           :product="product"
-          :showDiscount="true"
-        />
+          :showDiscount="true" />
       </template>
     </div>
     <div class="center-btn">
-      <PrimaryButton @click="$router.push('/products')">View All Products</PrimaryButton>
+      <PrimaryButton @click="$router.push('/products')"
+        >View All Products</PrimaryButton
+      >
     </div>
   </section>
 </template>
 
-<script>
-import SectionHeader from '@/modules/shared/components/SectionHeader.vue';
-import ProductCard from '@/modules/shared/components/ProductCard.vue';
-import PrimaryButton from '@/modules/shared/components/PrimaryButton.vue';
-import CardSkeleton from '@/modules/shared/components/CardSkeleton.vue';
+<script setup lang="ts">
+import SectionHeader from "@/modules/shared/components/SectionHeader.vue";
+import ProductCard from "@/modules/shared/components/ProductCard.vue";
+import PrimaryButton from "@/modules/shared/components/PrimaryButton.vue";
+import CardSkeleton from "@/modules/shared/components/CardSkeleton.vue";
+import type { Product } from "@/types";
 
-export default {
-  name: "FlashSales",
-  components: {
-    SectionHeader,
-    ProductCard,
-    PrimaryButton,
-    CardSkeleton
-  },
-  props: {
-    products: {
-      type: Array,
-      required: true
-    },
-    isLoading: {
-      type: Boolean,
-      default: false
-    }
-  }
-};
+/** Props interface */
+interface Props {
+  /** Flash sale products */
+  products: Product[];
+  /** Loading state */
+  isLoading?: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
+  isLoading: false,
+});
 </script>

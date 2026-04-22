@@ -2,11 +2,7 @@
   <div>
     <!-- Overlay -->
     <transition name="cart-overlay">
-      <div
-        v-if="isCartOpen"
-        class="cart-overlay"
-        @click="closeCart">
-      </div>
+      <div v-if="isCartOpen" class="cart-overlay" @click="closeCart"></div>
     </transition>
 
     <!-- Sliding Cart Panel -->
@@ -26,9 +22,13 @@
             v-for="item in cartItems"
             :key="item.id"
             class="sliding-cart__item"
-            :class="{ 'sliding-cart__item--highlighted': highlightedItem === item.id }">
+            :class="{
+              'sliding-cart__item--highlighted': highlightedItem === item.id,
+            }">
             <!-- Remove Button -->
-            <button class="sliding-cart__item-remove" @click="removeItem(item.id)">
+            <button
+              class="sliding-cart__item-remove"
+              @click="removeItem(item.id)">
               <img :src="cancelIconSmall" alt="remove" />
             </button>
 
@@ -42,7 +42,9 @@
 
             <!-- Quantity Spinner -->
             <div class="sliding-cart__item-quantity">
-              <span class="sliding-cart__item-qty-value">{{ String(item.quantity).padStart(2, '0') }}</span>
+              <span class="sliding-cart__item-qty-value">{{
+                String(item.quantity).padStart(2, "0")
+              }}</span>
               <div class="sliding-cart__item-qty-arrows">
                 <button @click="incrementQuantity(item)">
                   <img :src="dropUpIcon" alt="increase" />
@@ -54,7 +56,9 @@
             </div>
 
             <!-- Price -->
-            <span class="sliding-cart__item-price">${{ (item.price * item.quantity).toFixed(0) }}</span>
+            <span class="sliding-cart__item-price"
+              >${{ (item.price * item.quantity).toFixed(0) }}</span
+            >
           </div>
 
           <!-- Empty State -->
@@ -73,7 +77,8 @@
             <span>Shipping:</span>
             <span>Free</span>
           </div>
-          <div class="sliding-cart__summary-row sliding-cart__summary-row--total">
+          <div
+            class="sliding-cart__summary-row sliding-cart__summary-row--total">
             <span>Total:</span>
             <span>${{ cartTotal.toFixed(0) }}</span>
           </div>
@@ -84,42 +89,73 @@
   </div>
 </template>
 
-<script>
-import { mapGetters, mapActions } from "vuex";
+<script setup lang="ts">
+import { ref, watch, onUnmounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores";
+import type { CartItem } from "@/types";
+import cancelIcon from "@/assets/images/icon-cancel.svg";
+import dropUpIcon from "@/assets/images/Drop-Up-Small.svg";
+import dropDownIcon from "@/assets/images/Drop-Down-Small.svg";
 
-export default {
-  name: "SlidingCart",
-  data() {
-    return {
-      highlightedItem: null,
-      cancelIcon: require("@/assets/images/icon-cancel.svg"),
-      cancelIconSmall: require("@/assets/images/icon-cancel.svg"),
-      dropUpIcon: require("@/assets/images/Drop-Up-Small.svg"),
-      dropDownIcon: require("@/assets/images/Drop-Down-Small.svg"),
-    };
-  },
-  computed: {
-    ...mapGetters("cart", ["cartItems", "isCartOpen", "cartSubtotal", "cartTotal"]),
-  },
-  watch: {
-    isCartOpen(val) {
-      // Prevent body scroll when cart is open
-      document.body.style.overflow = val ? "hidden" : "";
-    },
-  },
-  methods: {
-    ...mapActions("cart", ["closeCart", "updateQuantity", "removeItem"]),
-    incrementQuantity(item) {
-      this.updateQuantity({ productId: item.id, quantity: item.quantity + 1 });
-    },
-    decrementQuantity(item) {
-      if (item.quantity > 1) {
-        this.updateQuantity({ productId: item.id, quantity: item.quantity - 1 });
-      }
-    },
-  },
-  beforeDestroy() {
-    document.body.style.overflow = "";
-  },
+
+/** Cart store */
+const cartStore = useCartStore();
+
+/** Currently highlighted item ID for animation */
+const highlightedItem = ref<number | null>(null);
+
+/** Icon assets */
+const cancelIconSmall = cancelIcon;
+
+/** Reactive store items with preserved reactivity */
+const {
+  cartItems,
+  cartOpen: isCartOpen,
+  cartSubtotal,
+  cartTotal,
+} = storeToRefs(cartStore);
+
+/** Watch cart open state to toggle body scroll */
+watch(isCartOpen, (val: boolean) => {
+  document.body.style.overflow = val ? "hidden" : "";
+});
+
+/** Cleanup on unmount */
+onUnmounted(() => {
+  document.body.style.overflow = "";
+});
+
+/**
+ * Increase item quantity
+ * @param item - Cart item to increment
+ */
+const incrementQuantity = (item: CartItem): void => {
+  cartStore.updateQuantity(item.id, item.quantity + 1);
+};
+
+/**
+ * Decrease item quantity
+ * @param item - Cart item to decrement
+ */
+const decrementQuantity = (item: CartItem): void => {
+  if (item.quantity > 1) {
+    cartStore.updateQuantity(item.id, item.quantity - 1);
+  }
+};
+
+/**
+ * Remove item from cart
+ * @param itemId - Item ID to remove
+ */
+const removeItem = (itemId: number): void => {
+  cartStore.removeItem(itemId);
+};
+
+/**
+ * Close the cart drawer
+ */
+const closeCart = (): void => {
+  cartStore.closeCart();
 };
 </script>

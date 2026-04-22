@@ -5,16 +5,19 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "FooterColumn",
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-  },
-};
+<script setup lang="ts">
+/** 
+ * FooterColumn Component
+ * A layout component for the footer that groups links or content under a title.
+ */
+
+/** Props interface for FooterColumn */
+interface Props {
+  /** Title text to display at the top of the column */
+  title: string;
+}
+
+defineProps<Props>();
 </script>
 
 <style lang="scss">

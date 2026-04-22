@@ -5,8 +5,7 @@
         <img
           :src="assets.appleLogo"
           alt="Apple logo"
-          class="home-hero-slide__brand-logo"
-        />
+          class="home-hero-slide__brand-logo" />
         <span class="home-hero-slide__brand-text">iPhone 14 Series</span>
       </div>
 
@@ -20,8 +19,7 @@
         <img
           :src="assets.arrowRight"
           alt="Arrow right"
-          class="home-hero-slide__link-icon"
-        />
+          class="home-hero-slide__link-icon" />
       </router-link>
     </div>
 
@@ -29,8 +27,7 @@
       <img
         :src="assets.heroImage"
         alt="iPhone 14 Pro"
-        class="home-hero-slide__image"
-      />
+        class="home-hero-slide__image" />
     </div>
 
     <div class="home-hero-slide__pagination" aria-label="Hero slide pagination">
@@ -43,21 +40,22 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
 import appleLogo from "@/assets/images/1200px-Apple_gray_logo 1.svg";
 import heroImage from "@/assets/images/hero_endframe__cvklg0xk3w6e_large 2.webp";
 import arrowRight from "@/assets/images/icons arrow-right.svg";
 
-export default {
-  name: "HomeHeroSlide",
-  data() {
-    return {
-      assets: {
-        appleLogo,
-        heroImage,
-        arrowRight
-      }
-    };
-  }
+/** Slider assets type */
+interface SliderAssets {
+  appleLogo: string;
+  heroImage: string;
+  arrowRight: string;
+}
+
+/** Hero slide image assets */
+const assets: SliderAssets = {
+  appleLogo,
+  heroImage,
+  arrowRight,
 };
 </script>

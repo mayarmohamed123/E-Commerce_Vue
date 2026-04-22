@@ -32,7 +32,9 @@
 
         <button class="navbar__action-btn" @click="toggleCart">
           <img :src="cartIcon" alt="Cart" class="navbar__action-icon" />
-          <span v-if="cartItemCount > 0" class="navbar__badge">{{ cartItemCount }}</span>
+          <span v-if="cartItemCount > 0" class="navbar__badge">{{
+            cartItemCount
+          }}</span>
         </button>
       </div>
 
@@ -67,7 +69,7 @@
           <router-link
             :to="link.path"
             class="navbar__mobile-link"
-            @click.native="closeMenu">
+            @click="closeMenu">
             {{ link.text }}
           </router-link>
         </li>
@@ -79,43 +81,54 @@
   </nav>
 </template>
 
-<script>
-import { mapGetters, mapActions } from "vuex";
+<script setup lang="ts">
+import { ref, onMounted, computed } from "vue";
+import { useCartStore } from "@/stores";
 import SlidingCart from "@/modules/cart/components/SlidingCart.vue";
+import searchIcon from "@/assets/images/Search.svg";
+import cartIcon from "@/assets/images/Cart1.svg";
 
-export default {
-  name: "AppNavbar",
-  components: {
-    SlidingCart,
-  },
-  data() {
-    return {
-      isMenuOpen: false,
-      navLinks: [
-        { text: "Home", path: "/" },
-        { text: "Products", path: "/products" },
-        { text: "Contact", path: "/contact" },
-        { text: "About", path: "/about" },
-      ],
-      searchIcon: require("@/assets/images/Search.svg"),
-      cartIcon: require("@/assets/images/Cart1.svg"),
-    };
-  },
-  computed: {
-    ...mapGetters("cart", ["cartItemCount"]),
-  },
-  created() {
-    this.fetchCart();
-  },
-  methods: {
-    ...mapActions("cart", ["toggleCart", "fetchCart"]),
-    toggleMenu() {
-      this.isMenuOpen = !this.isMenuOpen;
-    },
-    closeMenu() {
-      this.isMenuOpen = false;
-    },
-  },
+/** Navigation link type */
+interface NavLink {
+  text: string;
+  path: string;
+}
+
+/** Cart store */
+const cartStore = useCartStore();
+
+/** Mobile menu state */
+const isMenuOpen = ref<boolean>(false);
+
+/** Navigation links */
+const navLinks = ref<NavLink[]>([
+  { text: "Home", path: "/" },
+  { text: "Products", path: "/products" },
+  { text: "Contact", path: "/contact" },
+  { text: "About", path: "/about" },
+]);
+
+/** Cart item count from store (reactive) */
+const cartItemCount = computed(() => cartStore.cartItemCount);
+
+/** Fetch cart on mount */
+onMounted(() => {
+  cartStore.fetchCart();
+});
+
+/** Toggle mobile menu */
+const toggleMenu = (): void => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+/** Close mobile menu */
+const closeMenu = (): void => {
+  isMenuOpen.value = false;
+};
+
+/** Toggle cart drawer */
+const toggleCart = (): void => {
+  cartStore.toggleCart();
 };
 </script>
 

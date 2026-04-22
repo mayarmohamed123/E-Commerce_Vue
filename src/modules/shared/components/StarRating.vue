@@ -8,31 +8,48 @@
         alt="star"
         class="star-rating__star" />
     </div>
-    <span></span>
+    <span v-if="props.reviews !== undefined" class="star-rating__count">
+      ({{ props.reviews }})
+    </span>
   </div>
 </template>
-<script>
-export default {
-  name: "StarRating",
-  props: {
-    rating: {
-      type: Number,
-      default: 0,
-    },
-    reviews: {
-      type: Number,
-    },
-  },
-  methods: {
-    getStarIcon(star) {
-      if (this.rating >= star) {
-        return require("@/assets/images/Vector.svg");
-      } else if (this.rating >= star - 0.5) {
-        return require("@/assets/images/star-half-filled.svg");
-      } else {
-        return require("@/assets/images/Empty_Star.svg");
-      }
-    },
-  },
+<script setup lang="ts">
+import vectorIcon from "@/assets/images/Vector.svg";
+import starHalfIcon from "@/assets/images/star-half-filled.svg";
+import emptyStarIcon from "@/assets/images/Empty_Star.svg";
+
+/**
+ * Props interface for StarRating component
+ */
+interface Props {
+  /** Numeric rating value (0-5) */
+  rating: number;
+  /** Optional number of reviews */
+  reviews?: number;
+}
+
+/**
+ * StarRating Component
+ * Displays a 5-star rating visual based on numeric rating
+ */
+const props = withDefaults(defineProps<Props>(), {
+  rating: 0,
+  reviews: undefined,
+});
+
+
+/**
+ * Get the appropriate star icon for a given star position
+ * @param star - Star position (1-5)
+ * @returns Path to star icon image
+ */
+const getStarIcon = (star: number): string => {
+  if (props.rating >= star) {
+    return vectorIcon;
+  } else if (props.rating >= star - 0.5) {
+    return starHalfIcon;
+  } else {
+    return emptyStarIcon;
+  }
 };
 </script>

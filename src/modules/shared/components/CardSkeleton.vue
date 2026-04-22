@@ -14,13 +14,11 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import AppSkeleton from '@/modules/shared/components/AppSkeleton.vue';
 
-export default {
-  name: 'CardSkeleton',
-  components: {
-    AppSkeleton
-  }
-};
+/**
+ * CardSkeleton Component
+ * Composite skeleton loader representing a product card.
+ */
 </script>

@@ -30,21 +30,20 @@
   </section>
 </template>
 
-<script>
+<script setup lang="ts">
 import iconDelivery from "@/assets/images/icon-delivery.svg";
 import iconCustomerService from "@/assets/images/Icon-Customer service.svg";
 import iconGuarantee from "@/assets/images/shield-tick.svg";
 
-export default {
-  name: "AppServices",
-  data() {
-    return {
-      icons: {
-        delivery: iconDelivery,
-        customerService: iconCustomerService,
-        guarantee: iconGuarantee
-      }
-    };
-  }
+/**
+ * AppServices Component
+ * Section highlighting core platform benefits: delivery, support, and guarantee.
+ */
+
+/** Icon asset mapping */
+const icons = {
+  delivery: iconDelivery,
+  customerService: iconCustomerService,
+  guarantee: iconGuarantee
 };
 </script>

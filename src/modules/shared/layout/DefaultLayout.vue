@@ -8,17 +8,14 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import AppFooter from "./AppFooter.vue";
 import AppNavbar from "./AppNavbar.vue";
 
-export default {
-  name: "DefaultLayout",
-  components: {
-    AppNavbar,
-    AppFooter,
-  },
-};
+/**
+ * DefaultLayout Component
+ * Standard page layout containing the navbar, main content slot, and footer.
+ */
 </script>
 
 <style lang="scss"></style>

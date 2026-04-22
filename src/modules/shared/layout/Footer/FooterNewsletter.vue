@@ -14,15 +14,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "FooterNewsletter",
-  data() {
-    return {
-      sendIcon: require("@/assets/images/icon-send.svg"),
-    };
-  },
-};
+<script setup lang="ts">
+import sendIcon from "@/assets/images/icon-send.svg";
 </script>
 
 <style lang="scss">

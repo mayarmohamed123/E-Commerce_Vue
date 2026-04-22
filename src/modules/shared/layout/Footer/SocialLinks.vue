@@ -10,36 +10,43 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "SocialLinks",
-  data() {
-    return {
-      socials: [
-        {
-          name: "Facebook",
-          url: "#",
-          icon: require("@/assets/images/Icon-Facebook.svg"),
-        },
-        {
-          name: "Twitter",
-          url: "#",
-          icon: require("@/assets/images/Icon-Twitter.svg"),
-        },
-        {
-          name: "Instagram",
-          url: "#",
-          icon: require("@/assets/images/icon-instagram.svg"),
-        },
-        {
-          name: "LinkedIn",
-          url: "#",
-          icon: require("@/assets/images/Icon-Linkedin.svg"),
-        },
-      ],
-    };
+<script setup lang="ts">
+import { ref } from "vue";
+import facebookIcon from "@/assets/images/Icon-Facebook.svg";
+import twitterIcon from "@/assets/images/Icon-Twitter.svg";
+import instagramIcon from "@/assets/images/icon-instagram.svg";
+import linkedinIcon from "@/assets/images/Icon-Linkedin.svg";
+
+/** Social link interface */
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: string;
+}
+
+/** Social media links */
+const socials = ref<SocialLink[]>([
+  {
+    name: "Facebook",
+    url: "#",
+    icon: facebookIcon,
   },
-};
+  {
+    name: "Twitter",
+    url: "#",
+    icon: twitterIcon,
+  },
+  {
+    name: "Instagram",
+    url: "#",
+    icon: instagramIcon,
+  },
+  {
+    name: "LinkedIn",
+    url: "#",
+    icon: linkedinIcon,
+  },
+]);
 </script>
 
 <style lang="scss"></style>

@@ -14,24 +14,30 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import ContactForm from "../components/ContactForm.vue";
 import AppBreadcrumb from "@/modules/shared/components/AppBreadcrumb.vue";
 import defaultHeroImage from "@/assets/images/Frame 760.webp";
-export default {
-  name: "ContactView",
-  components: {
-    ContactForm,
-    AppBreadcrumb,
-  },
-  data() {
-    return {
-      heroImage: defaultHeroImage,
-      breadcrumbItems: [
-        { label: "Home", to: "/" },
-        { label: "Contact" },
-      ],
-    };
-  },
-};
+
+/**
+ * ContactView Component
+ * Main view for the contact page, combining breadcrumbs, hero image, and the contact form.
+ */
+
+/** Breadcrumb item interface */
+interface BreadcrumbItem {
+  /** Label for navigation link */
+  label: string;
+  /** Optional target path */
+  to?: string;
+}
+
+/** Hero image asset for the contact section */
+const heroImage: string = defaultHeroImage;
+
+/** Breadcrumb navigation items */
+const breadcrumbItems: BreadcrumbItem[] = [
+  { label: "Home", to: "/" },
+  { label: "Contact" },
+];
 </script>

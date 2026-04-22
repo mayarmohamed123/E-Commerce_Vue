@@ -6,15 +6,13 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import DefaultLayout from "@/modules/shared/layout/DefaultLayout.vue";
 
-export default {
-  name: "App",
-  components: {
-    DefaultLayout,
-  },
-};
+/**
+ * App Component
+ * Root component that provides the main layout wrapper and router view.
+ */
 </script>
 
 <style lang="scss"></style>

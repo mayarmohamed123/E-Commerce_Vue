@@ -10,38 +10,35 @@
   </div>
 </template>
 
-<script>
-import { mapGetters, mapActions } from "vuex";
+<script setup lang="ts">
+import { watch } from "vue";
+import { storeToRefs } from "pinia";
+import { useProductsStore } from "@/stores";
 import SectionHeader from "@/modules/shared/components/SectionHeader.vue";
 import ProductCard from "@/modules/shared/components/ProductCard.vue";
 
-export default {
-  name: "RelatedProducts",
-  components: {
-    SectionHeader,
-    ProductCard,
+/** Props interface */
+interface Props {
+  /** Category name to fetch related products */
+  category: string;
+}
+
+const props = defineProps<Props>();
+
+/** Products store */
+const productsStore = useProductsStore();
+
+/** Related products from store - using storeToRefs for reactivity */
+const { related: relatedProducts } = storeToRefs(productsStore);
+
+/** Watch category changes and fetch related products */
+watch(
+  () => props.category,
+  (newCategory) => {
+    if (newCategory) {
+      productsStore.fetchRelatedProducts(newCategory);
+    }
   },
-  props: {
-    category: {
-      type: String,
-      required: true,
-    },
-  },
-  computed: {
-    ...mapGetters("products", ["relatedProducts"]),
-  },
-  watch: {
-    category: {
-      immediate: true,
-      handler(newCategory) {
-        if (newCategory) {
-          this.fetchRelatedProducts(newCategory);
-        }
-      },
-    },
-  },
-  methods: {
-    ...mapActions("products", ["fetchRelatedProducts"]),
-  },
-};
+  { immediate: true },
+);
 </script>

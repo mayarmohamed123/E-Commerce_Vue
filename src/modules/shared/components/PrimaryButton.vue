@@ -4,9 +4,14 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "PrimaryButton",
-};
+<script setup lang="ts">
+/**
+ * PrimaryButton Component
+ * Reusable stylized button for main call-to-actions.
+ */
+defineEmits<{
+  /** Emitted when button is clicked */
+  (e: "click"): void;
+}>();
 </script>
 
