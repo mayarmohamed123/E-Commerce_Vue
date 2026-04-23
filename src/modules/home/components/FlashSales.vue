@@ -14,9 +14,9 @@
       </template>
     </div>
     <div class="center-btn">
-      <PrimaryButton @click="$router.push('/products')"
-        >View All Products</PrimaryButton
-      >
+      <router-link to="/products">
+        <PrimaryButton>View All Products</PrimaryButton>
+      </router-link>
     </div>
   </section>
 </template>

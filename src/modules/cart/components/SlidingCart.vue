@@ -2,12 +2,12 @@
   <div>
     <!-- Overlay -->
     <transition name="cart-overlay">
-      <div v-if="isCartOpen" class="cart-overlay" @click="closeCart"></div>
+      <div v-if="cartStore.isCartOpen" class="cart-overlay" @click="closeCart"></div>
     </transition>
 
     <!-- Sliding Cart Panel -->
     <transition name="cart-slide">
-      <div v-if="isCartOpen" class="sliding-cart">
+      <div v-if="cartStore.isCartOpen" class="sliding-cart">
         <!-- Header -->
         <div class="sliding-cart__header">
           <h2 class="sliding-cart__title">Shopping Cart</h2>
@@ -19,7 +19,7 @@
         <!-- Cart Items -->
         <div class="sliding-cart__items">
           <div
-            v-for="item in items"
+            v-for="item in cartStore.items"
             :key="item.id"
             class="sliding-cart__item"
             :class="{
@@ -62,7 +62,7 @@
           </div>
 
           <!-- Empty State -->
-          <div v-if="items.length === 0" class="sliding-cart__empty">
+          <div v-if="cartStore.items.length === 0" class="sliding-cart__empty">
             <p>Your cart is empty.</p>
           </div>
         </div>
@@ -71,7 +71,7 @@
         <div class="sliding-cart__footer">
           <div class="sliding-cart__summary-row">
             <span>Subtotal:</span>
-            <span>${{ cartSubtotal.toFixed(0) }}</span>
+            <span>${{ cartStore.cartSubtotal.toFixed(0) }}</span>
           </div>
           <div class="sliding-cart__summary-row">
             <span>Shipping:</span>
@@ -80,7 +80,7 @@
           <div
             class="sliding-cart__summary-row sliding-cart__summary-row--total">
             <span>Total:</span>
-            <span>${{ cartTotal.toFixed(0) }}</span>
+            <span>${{ cartStore.cartTotal.toFixed(0) }}</span>
           </div>
           <button class="sliding-cart__checkout-btn">Place Order</button>
         </div>
@@ -91,7 +91,6 @@
 
 <script setup lang="ts">
 import { ref, watch, onUnmounted } from "vue";
-import { storeToRefs } from "pinia";
 import { useCartStore } from "@/stores";
 import type { CartItem } from "@/types";
 import cancelIcon from "@/assets/images/icon-cancel.svg";
@@ -108,16 +107,10 @@ const highlightedItem = ref<number | null>(null);
 /** Icon assets */
 const cancelIconSmall = cancelIcon;
 
-/** Reactive store items with preserved reactivity */
-const {
-  items,
-  isCartOpen,
-  cartSubtotal,
-  cartTotal,
-} = storeToRefs(cartStore);
+
 
 /** Watch cart open state to toggle body scroll */
-watch(isCartOpen, (val: boolean) => {
+watch(() => cartStore.isCartOpen, (val: boolean) => {
   document.body.style.overflow = val ? "hidden" : "";
 });
 
