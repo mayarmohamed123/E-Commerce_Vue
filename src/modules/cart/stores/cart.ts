@@ -114,7 +114,7 @@ export const useCartStore = defineStore("cart", {
       }
       this._debounceTimer = setTimeout(() => {
         this.syncCartToBackend();
-      }, 500); // 500ms debounce
+      }, 1000); // 1000ms debounce
     },
 
     /**

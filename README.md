@@ -44,23 +44,27 @@ src/
 ## 📦 Setup Instructions
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd my-app
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Environment Setup**
    Create a `.env` file (optional, defaults are in code):
+
    ```env
    VITE_API_BASE_URL=https://dummyjson.com
    ```
 
 4. **Run Development Server**
+
    ```bash
    npm run dev
    ```
@@ -73,14 +77,14 @@ src/
 ## 📝 Technical Documentation
 
 ### Component Migration
+
 All components have been migrated to the Composition API. We use:
+
 - `defineProps` for typed props.
 - `defineEmits` for typed events.
 - `computed` for derived state.
 - `ref` for reactive primitives.
 
 ### Store Patterns
-Stores are implemented using the Pinia Options Store syntax (with state, getters, and actions) for clarity, fully documented with JSDoc to describe data flow and async operations.
 
----
-*Created as part of the Week 4 Migration & Documentation Sprint.*
+Stores are implemented using the Pinia Options Store syntax (with state, getters, and actions) for clarity, fully documented with JSDoc to describe data flow and async operations.
